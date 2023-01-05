@@ -1,5 +1,5 @@
 ## Customer Management System 
-* OSSWP_고객 관리 시스템 프로젝트
+* OSSWP_ React와 Node js를 사용한 고객 관리 시스템 웹페이지 프로젝트
 
 - Node js : 사용자의 고객정보를 데이터베이스로 관리할 수 있는 웹서버 프로그래밍
 - material ui : 디자인 프레임워크 
