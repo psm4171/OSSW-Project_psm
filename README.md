@@ -1,5 +1,12 @@
 ## Management System 
-고객 관리 시스템 프로젝트입니다. 
+OSSWP_고객 관리 시스템 프로젝트
+
+Node js : 사용자의 고객정보를 데이터베이스로 관리할 수 있는 웹서버 프로그래밍
+material ui : 디자인 프레임워크 
+react : 웹 프론트엔드 라이브러리 
+
+npm이란 node js 기반으로된 각종 패키지를 관리하는 도구 -> react 개발환경 구축 
+![npm 설치_1](https://user-images.githubusercontent.com/94738749/210752740-2bddb96a-4333-4ddb-b4f6-96646951d51a.png)
 
 # Getting Started with Create React App!
 
@@ -8,6 +15,12 @@
 ![react 보안오류 발생 해결](https://user-images.githubusercontent.com/94738749/210752471-987b3f9a-1b22-4ee9-94c6-c046838c49e8.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+ㅁ yarn start를 이용하여 react 실행
+creat react-app 기본적으로 웹 프론트 서버가 구동된 상태에서 소스코드를 수정하면
+알아서 수정된 내역에 맞게 컴파일이 다시 이루어지면서 실제 웹 서비스에 반영된다.
+
+![yarn 설치 후 실행_4](https://user-images.githubusercontent.com/94738749/210752822-5535bc33-6bbe-489c-8ba1-55c681081943.png)
 
 ![react 앱 실행 결과_5](https://user-images.githubusercontent.com/94738749/210752529-888af156-7f43-4d66-b4c0-1c67797cfb51.png)
 
