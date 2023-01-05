@@ -22,6 +22,7 @@ creat react-app 기본적으로 웹 프론트 서버가 구동된 상태에서 �
 
 ![yarn 설치 후 실행_4](https://user-images.githubusercontent.com/94738749/210752822-5535bc33-6bbe-489c-8ba1-55c681081943.png)
 
+react-app 웹 실행한 결과 
 ![react 앱 실행 결과_5](https://user-images.githubusercontent.com/94738749/210752529-888af156-7f43-4d66-b4c0-1c67797cfb51.png)
 
 
