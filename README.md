@@ -6,6 +6,7 @@
 - react : 웹 프론트엔드 라이브러리 
 
 ㅁ npm이란 node js 기반으로된 각종 패키지를 관리하는 도구 -> react 개발환경 구축 
+
 ![npm 설치_1](https://user-images.githubusercontent.com/94738749/210752740-2bddb96a-4333-4ddb-b4f6-96646951d51a.png)
 
 # Getting Started with Create React App!
