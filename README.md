@@ -1,9 +1,16 @@
 ## Management System 
 고객 관리 시스템 프로젝트입니다. 
 
-# Getting Started with Create React App
+# Getting Started with Create React App!
+
+[react 설치 1](https://user-images.githubusercontent.com/94738749/210752421-80234bb7-be84-4c31-b004-157fd56ad3ad.png)
+
+![react 보안오류 발생 해결](https://user-images.githubusercontent.com/94738749/210752471-987b3f9a-1b22-4ee9-94c6-c046838c49e8.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+![react 앱 실행 결과_5](https://user-images.githubusercontent.com/94738749/210752529-888af156-7f43-4d66-b4c0-1c67797cfb51.png)
+
 
 ## Available Scripts
 
