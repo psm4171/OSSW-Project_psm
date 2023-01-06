@@ -37,6 +37,26 @@ creat react-app 기본적으로 웹 프론트 서버가 구동된 상태에서 �
 ![react 앱 실행 결과_5](https://user-images.githubusercontent.com/94738749/210752529-888af156-7f43-4d66-b4c0-1c67797cfb51.png)
 
 
+
+웹프론트엔드 즉, 클라이언트 프로그램과 서로 데이터를 주고받는 api역할인 
+node js를 웹서버로 구축  
+
+서버 모듈을 명시하도록 package.json 
+// client와 server를 동시에 실행시키는 형태 
+ "scripts": {
+        "client": "cd client && yarn start",
+        "server": "nodemon server.js",
+        "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    },
+
+yarn dev 명령어를 통해 -> 클라이언트와 서버를 동시에 구축 
+
+![App 서버로부터 고객 정보를 받아오는 부분](https://user-images.githubusercontent.com/94738749/210943787-d71e8e3d-fe70-43db-bd50-0cad71335243.png)
+
+
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
