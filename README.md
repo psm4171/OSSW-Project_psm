@@ -53,7 +53,8 @@ yarn dev 명령어를 통해 -> 클라이언트와 서버를 동시에 구축
 
 ![App 서버로부터 고객 정보를 받아오는 부분](https://user-images.githubusercontent.com/94738749/210943787-d71e8e3d-fe70-43db-bd50-0cad71335243.png)
 
-
+서버 부분 port:5000에서 클라이언트 부분 port:3000으로 데이터를 전송하여 실행한 부분 
+![포트 5000에서 3000으로 데이터를 받아옴](https://user-images.githubusercontent.com/94738749/210944963-96f9e01a-5983-44ba-874f-3b6252cd33f3.png)
 
 
 
