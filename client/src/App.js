@@ -25,41 +25,32 @@ const styles = theme => ({
   }
 })
 
-
-
-// 보내는 데이터 명시
-const customers = [
-{
-  'id' : 1,
-  'image' : 'https://placimg.com./64/64/any',
-  'name': '가나다',
-  'birth' : '990101',
-  'gender' : '여자',
-  'job' : '서버 관리자'
-
-},
-
-{
-  'id' : 2,
-  'image' : 'https://placimg.com./64/64/any',
-  'name': '김대한',
-  'birth' : '010504',
-  'gender' : '남자',
-  'job' : '개발자'
-},
-
-{
-  'id' : 3,
-  'image' : 'https://placimg.com./64/64/any',
-  'name': '박민국',
-  'birth' : '980504',
-  'gender' : '남자',
-  'job' : '대학생'
-}
-]
+// 고객 정보는 변할 수 있는 데이터, 필요할때마다 서버에서 데이터를 불러옴 
 
 // Paper는 컴포넌트 외부를 감싸는 컴포넌트
 class App extends Component {
+
+  //props는 변할 수 없는 데이터 
+  // state는 컴포넌트 내에서 변할 수 있는 데이터를 가져올 때 
+  state = {
+    customers:""
+  }
+
+  // 모든 컴포넌트가 마운트, 고객 목록 데이터를 부르는 함수  
+  componentDidMount(){
+    this.callApi()
+    .then(res => this.setState({customers: res}))
+    .catch(err => console.log(err));
+
+  }
+
+  // 비동기 async, 고객 목록 데이터를 반환 
+  callApi = async () => {
+    const response = await fetch('/api/customers');
+    const body = await response.json(); 
+    return body;
+  }
+
   render(){
     // 클래스 변수 선언 
     const {classes} = this.props;
@@ -80,20 +71,11 @@ class App extends Component {
         </TableHead>
 
         <TableBody>
-            { customers.map(c => { 
-            return ( 
-            <Customer 
-            key={c.id}
-            id={c.id}
-            image={c.image}
-            name={c.name}
-            birth={c.birth}
-            gender={c.gender}
-            job={c.job}
-            />
-            );
-            })
-          }
+          
+            { this.state.customers ? this.state.customers.map(c => { 
+            return ( <Customer key={c.id} id={c.id} image={c.image} name={c.name} birth={c.birth} gender={c.gender} job={c.job}/>);
+            }) : ""}
+
         </TableBody>
 
       </Table>
