@@ -8,7 +8,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import  CircularProgress   from '@material-ui/core/CircularProgress';
+import  CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 
 
@@ -32,9 +32,7 @@ const styles = theme => ({
 
 });
 
-
-
-// props or state -> shouldComponentUpdate()
+// props or state 변경된 경우 함수 호출, shouldComponentUpdate()
 // 상태 관리를 통해 상태 변환시 화면을 재구성 
 
 // 고객 정보는 변할 수 있는 데이터, 필요할때마다 서버에서 데이터를 불러옴 
@@ -44,6 +42,7 @@ class App extends Component {
 
   //props는 변할 수 없는 데이터 
   // state는 컴포넌트 내에서 변할 수 있는 데이터를 가져올 때 
+  // progress 바는 0%에서 100%까지 로딩 화면을 보이기 때문에 complted: 0
   state = {
     customers:"",
     completed: 0
@@ -95,16 +94,16 @@ class App extends Component {
           
             { this.state.customers ? this.state.customers.map(c => { 
             return ( <Customer key={c.id} id={c.id} image={c.image} name={c.name} birth={c.birth} gender={c.gender} job={c.job}/>);
-            }) : ""}
+            }) : 
+            
             <TableRow>
-              <TableCell colSpan="6" align="center">
-                <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
-              </TableCell>
-
+             <TableCell colSpan="6" align="center">
+               <CircularProgress className={classes.progress} variant="determinate" value={this.state.completed}/>
+             </TableCell>
             </TableRow>
+            }
 
         </TableBody>
-
       </Table>
     </Paper>
             
