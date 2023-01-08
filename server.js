@@ -14,7 +14,7 @@ app.get('/api/customers', (req, res) => {
         {
             'id' : 1,
             'image' : 'https://placimg.com./64/64/any',
-            'name': '가나다',
+            'name': '김나라',
             'birth' : '990101',
             'gender' : '여자',
             'job' : '서버 관리자'
@@ -25,7 +25,7 @@ app.get('/api/customers', (req, res) => {
             'id' : 2,
             'image' : 'https://placimg.com./64/64/any',
             'name': '김대한',
-            'birth' : '010504',
+            'birth' : '971225',
             'gender' : '남자',
             'job' : '개발자'
           },
