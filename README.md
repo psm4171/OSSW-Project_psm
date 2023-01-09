@@ -56,6 +56,11 @@ yarn dev 명령어를 통해 -> 클라이언트와 서버를 동시에 구축
 서버 부분 port:5000에서 클라이언트 부분 port:3000으로 데이터를 전송하여 실행한 부분 
 ![포트 5000에서 3000으로 데이터를 받아옴](https://user-images.githubusercontent.com/94738749/210944963-96f9e01a-5983-44ba-874f-3b6252cd33f3.png)
 
+AWS를 통해서 DB를 구축한 화면 
+![AWS를 통한 DB 생성](https://user-images.githubusercontent.com/94738749/211307693-d4777466-088d-4b68-8eac-a00e2e772908.png)
+
+구축한 DB에 데이터를 삽입하고 클라이언트 측에서 서버에 접근하여 고객 데이터를 가져온 결과 
+![DB에 삽입한 데이터와 서버를 통해 데이터를 불러와서 클라이언트에 표시](https://user-images.githubusercontent.com/94738749/211307818-f74f4ed0-6c9a-490d-87fc-3ae87b4667a4.png)
 
 
 ## Available Scripts
