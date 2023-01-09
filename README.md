@@ -57,6 +57,11 @@ node js를 웹서버로 구축
 
 ![포트 5000에서 3000으로 데이터를 받아옴](https://user-images.githubusercontent.com/94738749/210944963-96f9e01a-5983-44ba-874f-3b6252cd33f3.png)
 
+## 고객 테이블 생성 
+
+![고객 테이블 생성](https://user-images.githubusercontent.com/94738749/211313578-b866d933-5192-414a-946f-f5b2dbabd02e.png)
+
+
 ## AWS를 통해서 DB를 구축한 화면 
 
 ![AWS를 통한 DB 생성](https://user-images.githubusercontent.com/94738749/211307693-d4777466-088d-4b68-8eac-a00e2e772908.png)
