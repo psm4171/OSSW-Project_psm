@@ -7,6 +7,19 @@
 
 ![고객 관리 시스템3](https://user-images.githubusercontent.com/94738749/210760437-bb71ec92-50b9-440b-8829-bb8650d28e57.png)
 
+## App.js는 어떤 역할? 
+
+material ui를 이용한 테이블 구조를 구성 
+상태 관리를 통해 상태 변환시 화면을 재구성
+고객 정보는 변할 수 있는 데이터, 필요할때마다 서버에서 데이터를 불러오는 부분 
+비동기적으로 async 호출 , 고객 목록 데이터를 반환
+
+## server.js는 어떤 역할? 
+
+사용자 입장에서 고객의 프로필 이미지 등 고객 정보를 추가하면 서버가 클라이언트에 접근하여 새로운 데이터가 적용된 화면을 볼 수 있는 부 
+클라이언트가 customers에 접속을 하면, DB에 접근해서 쿼리
+react 클라이언트에서 해당 비동기 통신을 이용하여 서버에 접근 후 데이터를 가져옴
+
 
 
 
@@ -14,7 +27,7 @@
 - material ui : 디자인 프레임워크 
 - react : 웹 프론트엔드 라이브러리 
 
-ㅁ npm이란 node js 기반으로된 각종 패키지를 관리하는 도구 -> react 개발환경 구축 
+## npm이란 node js 기반으로된 각종 패키지를 관리하는 도구 -> react 개발환경 구축 
 
 ![npm 설치_1](https://user-images.githubusercontent.com/94738749/210752740-2bddb96a-4333-4ddb-b4f6-96646951d51a.png)
 
@@ -26,20 +39,20 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-ㅁ yarn start를 이용하여 react 실행
+## yarn start를 이용하여 react 실행
 creat react-app 기본적으로 웹 프론트 서버가 구동된 상태에서 소스코드를 수정하면
 알아서 수정된 내역에 맞게 컴파일이 다시 이루어지면서 실제 웹 서비스에 반영된다.
 
 ![yarn 설치 후 실행_4](https://user-images.githubusercontent.com/94738749/210752822-5535bc33-6bbe-489c-8ba1-55c681081943.png)
 
-ㅁ react-app 웹 실행한 결과 
+## react-app 웹 실행한 결과 
 
 ![react 앱 실행 결과_5](https://user-images.githubusercontent.com/94738749/210752529-888af156-7f43-4d66-b4c0-1c67797cfb51.png)
 
 
-
 웹프론트엔드 즉, 클라이언트 프로그램과 서로 데이터를 주고받는 api역할인 
 node js를 웹서버로 구축  
+
 
 서버 모듈을 명시하도록 package.json 
 // client와 server를 동시에 실행시키는 형태 
@@ -49,13 +62,26 @@ node js를 웹서버로 구축
         "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
     },
 
-yarn dev 명령어를 통해 -> 클라이언트와 서버를 동시에 구축 
+## yarn dev 명령어를 통해 -> 클라이언트와 서버를 동시에 구축 
 
 ![App 서버로부터 고객 정보를 받아오는 부분](https://user-images.githubusercontent.com/94738749/210943787-d71e8e3d-fe70-43db-bd50-0cad71335243.png)
 
-서버 부분 port:5000에서 클라이언트 부분 port:3000으로 데이터를 전송하여 실행한 부분 
+## 서버 부분 port:5000에서 클라이언트 부분 port:3000으로 데이터를 전송하여 실행한 부분 
+
 ![포트 5000에서 3000으로 데이터를 받아옴](https://user-images.githubusercontent.com/94738749/210944963-96f9e01a-5983-44ba-874f-3b6252cd33f3.png)
 
+## 고객 테이블 생성 
+
+![고객 테이블 생성](https://user-images.githubusercontent.com/94738749/211313578-b866d933-5192-414a-946f-f5b2dbabd02e.png)
+
+
+## AWS를 통해서 DB를 구축한 화면 
+
+![AWS를 통한 DB 생성](https://user-images.githubusercontent.com/94738749/211307693-d4777466-088d-4b68-8eac-a00e2e772908.png)
+
+## 구축한 DB에 데이터를 삽입하고 클라이언트 측에서 서버에 접근하여 고객 데이터를 가져온 결과 
+
+![DB에 삽입한 데이터와 서버를 통해 데이터를 불러와서 클라이언트에 표시](https://user-images.githubusercontent.com/94738749/211307818-f74f4ed0-6c9a-490d-87fc-3ae87b4667a4.png)
 
 
 ## Available Scripts
