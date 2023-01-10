@@ -25,6 +25,4 @@ class Customer extends React.Component{
 
 // 고객의 남은 정보를 출력하는 부분 
 
-
-
 export default Customer; // 다른 컴포넌트에서 사용할 수 있게 내보냄 

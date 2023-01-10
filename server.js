@@ -22,6 +22,9 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
+const multer = require('multer');
+const upload = multer({dest: './upload'})
+
 // 클라이언트가 customers에 접속을 하면, DB에 접근해서 쿼리
 // 가져온 데이터를 rows변수로 처리
 // 모든 고객 데이터가 포함된 rows 변수를 사용자에게 보여줌
@@ -34,5 +37,29 @@ app.get('/api/customers', (req, res) => {
     );
 
 });
+
+app.use('/image', express.static('./upload'));
+
+app.post('/api/customers', upload.single('image'), (req, res) => {
+  let sql = 'INSERT INTO CUSTOMER_osswp VALUES (null, ?, ?, ?, ?, ?)';
+  let image = '/image/' + req.file.filename; 
+  let name = req.body.name; 
+  let birth = req.body.birth; 
+  let gender = req.body.gender; 
+  let job = req.body.job; 
+  console.log(image);
+  console.log(name);
+  console.log(birth);
+  console.log(gender);
+  console.log(job);
+  let parms = [image, name, birth, gender, job];
+  connection.query(sql, parms,
+    (err, rows, fields) => {
+      res.send(rows);
+    }
+  );
+
+});
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
