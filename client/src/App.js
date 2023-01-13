@@ -43,9 +43,23 @@ class App extends Component {
   //props는 변할 수 없는 데이터 
   // state는 컴포넌트 내에서 변할 수 있는 데이터를 가져올 때 
   // progress 바는 0%에서 100%까지 로딩 화면을 보이기 때문에 complted: 0
-  state = {
-    customers:"",
-    completed: 0
+  constructor(props){
+    super(props);
+    this.state = {
+      customers: '',
+      completed: 0
+    }
+  }
+
+  stateRefresh = () => {
+    this.setState({
+      customers: '',
+      completed: 0
+    });
+    this.callApi()
+    .then(res => this.setState({customers: res}))
+    .catch(err => console.log(err));
+
   }
 
   // 모든 컴포넌트가 마운트, 고객 목록 데이터를 부르는 함수  
@@ -72,7 +86,6 @@ class App extends Component {
   }
 
   render(){
-    // 클래스 변수 선언 
     // material ui를 이용한 테이블 구조
     // map형태로 반복, 각 원소를 구분하는 key값 (id값이 다르기 때문에 c.id로 설정)
     const {classes} = this.props;
@@ -107,10 +120,10 @@ class App extends Component {
           </TableBody>
         </Table>
       </Paper>
-    <CustomerAdd/>
+    <CustomerAdd stateRefresh={this.stateRefresh}/>
   </div>
-            );
-        }
-      }
+    );
+  }
+}
 
 export default withStyles(styles)(App);
