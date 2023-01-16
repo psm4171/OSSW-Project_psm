@@ -1,111 +1,254 @@
-// 디자인이 없는 고객 추가 양식을 만드는 부분 
-// 서버와의 통신 목적인 axios
-
-import React from 'react';
-import { post } from 'axios';
 
 
-// 사용자 프로필 이미지는 파일 형태: null
+import React from 'react'
+import axios from 'axios';
+//import { post } from 'axios';
+
+
+
 class CustomerAdd extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            file: null,
-            userName: '',
-            birth: '',
-            gender: '',
-            job: '',
-            fileName: ''
-        }
 
+  constructor(props) {
+
+    super(props);
+
+    this.state = {
+      file: null,
+      userName: '',
+      birth: '',
+      gender: '',
+      job: '',
+      fileName: ''
     }
 
-    // 이벤트 변수를 전달 받아서 handleFormSubmit = (e) => {} , addCustomer 함수를 실행
-    //  e.preventDefault() 데이터가 서버로 전달됨에 있어서 오류 발생하지 않도록 하는 함수 
-    // .then 서버로부터 response가 건너오면, 건너온 데이터를 콘솔창에 출력 
-    handleFormSubmit = (e) => {
-        e.preventDefault()
-        this.addCustomer()
-            .then((response) => {
-                console.log(response.data);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleFileChange = this.handleFileChange.bind(this)
+    this.handleValueChange = this.handleValueChange.bind(this)
+    this.addCustomer = this.addCustomer.bind(this)
 
-            })
+  }
 
-            this.setState({
-                file: null,
-                userName: '',
-                birth: '',
-                gender: '',
-                job: '',
-                fileName: ''
-            })
-            window.location.reload();
+
+ // 고객 목록은 비동기적, 고객을 추가한 이후에 서버 응답을 받고
+  // 고객 목록을 받아옴. 
+  handleFormSubmit(e) {
+    e.preventDefault()
+    this.addCustomer()
+    .then((response) => {
+      console.log(response.data);
+      this.props.stateRefresh(); 
+    })
+
+    this.state = ({
+      file: null,
+      userName: '',
+      birth: '',
+      gender: '',
+      job: '',
+      fileName: ''
+    })
+
+  }
+
+
+  handleFileChange(e) {
+    this.setState({
+      file: e.target.files[0],
+      fileName: e.target.value
+    });
+  }
+
+  
+
+  handleValueChange(e) {
+    let nextState = {};
+    nextState[e.target.name] = e.target.value;
+    this.setState(nextState);
+  }
+
+
+
+  addCustomer(){
+
+    const url = '/api/customers';
+    const formData = new FormData();
+    formData.append('image', this.state.file)
+    formData.append('name', this.state.userName)
+    formData.append('birth', this.state.birth)
+    formData.append('gender', this.state.gender)
+    formData.append('job', this.state.job)
+
+    const config = {
+
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
     }
+    return axios.post(url, formData, config)
+  }
 
 
-    // file 값이 변경됐을 때 불러오는 handleFileChange()
-    // file 값을 변경, e.target files[0]을 한 이유 : 
-    // 파일을 업로드할 때, 프로필 이미지인 하나의 파일만 선택해서 올리도록 설정하기 때문에 files[0] 
-    handleFileChange = (e) => {
-        this.setState({
-            file: e.target.files[0],
-            fileName: e.target.value 
 
-        })
+  render() {
+
+    return (
+
+        <form onSubmit={this.handleFormSubmit}>
+
+          <h1>고객 추가</h1>
+          프로필 이미지: <input type="file" name="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
+          이름: <input type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br/>
+          생년월일: <input type="text" name="birth" value={this.state.birth} onChange={this.handleValueChange} /><br/>
+          성별: <input type="text" name="gender" value={this.state.gender} onChange={this.handleValueChange} /><br/>
+          직업: <input type="text" name="job" value={this.state.job} onChange={this.handleValueChange} /><br/>
+          <button type="submit">추가하기</button>
+
+        </form>
+
+      )
     }
+  }
+
+export default CustomerAdd
 
 
-    // file 값이 변경됐을 때 불러오는 handleValueChange()
-    // 사용자가 입력한 이름,생년월일 등을 반영하는 부분 nextState[e.target.name] = e.target.value; 
-    // nextState 값을 이용하여 현재 setState 값을 갱신 
-    handleValueChange = (e) => {
-        let nextState = {};
-        nextState[e.target.name] = e.target.value;
-        this.setState(nextState);
+
+/*
+import React from 'react'
+import axios from 'axios';
+import { post } from 'axios';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = theme => ({
+  hidden: {
+    display: 'none'
+  }
+});
+
+class CustomerAdd extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      file: null,
+      userName: '',
+      birth: '',
+      gender: '',
+      job: '',
+      fileName: '',
+      open: false
     }
+    this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleFileChange = this.handleFileChange.bind(this)
+    this.handleValueChange = this.handleValueChange.bind(this)
+    this.addCustomer = this.addCustomer.bind(this)
+    this.handleClickOpen = this.handleClickOpen.bind(this)
+    this.handleClose = this.handleClose.bind(this);
+  }
 
+  handleFormSubmit(e) {
+    e.preventDefault()
+    this.addCustomer()
+    .then((response) => {
+      console.log(response.data);
+      this.props.stateRefresh();
+    })
+    this.setState({
+      file: null,
+      userName: '',
+      birth: '',
+      gender: '',
+      job: '',
+      fileName: '',
+      open: false
+    })
+  }
 
-    // 상태변화 감지 onChange 
-    // api 주소로 데이터를 보낼 수 있도록 함 
-    // this.state.file 데이터를 이미지로 전송 
-    addCustomer = () => {
-        const url = '/api/customers';
-        const formData = new FormData();
-        formData.append('image', this.state.file);
-        formData.append('name',this.state.userName);
-        formData.append('birth',this.state.birth);
-        formData.append('gender',this.state.gender);
-        formData.append('job',this.state.job);
+  handleFileChange(e) {
+    this.setState({
+      file: e.target.files[0],
+      fileName: e.target.value
+    });
+  }
+  
+  handleValueChange(e) {
+    let nextState = {};
+    nextState[e.target.name] = e.target.value;
+    this.setState(nextState);
+  }
 
-
-        // 파일이 포함된 데이터를 서버로 전송하고자 할 때는 웹 표준에 맞는 헤더 추가
-        // 즉 formData에 파일이 있을 경우 'multipart/form-data' 설정
-        const config = {
-            headers: {
-                'content-type' : 'multipart/form-data'
-            }
-           
-        }
-        return post(url, formData, config);
-}
-
-
-    // 고객 추가 버튼 눌렀을 때 handleFormSubmit 수행 
-    // form은 내부적으로 어떤 값들을 서버로 보내줄 수 있는지 설정 : input
-    render(){
-        return (
-            <form onSubmit={this.handleFormSubmit}>
-                <h1>고객 추가</h1>
-                프로필 이미지: <input type ="file" name="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>  
-                이름 : <input type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange}/><br/>
-                생년월일: <input type="text" name="birth" value={this.state.birth} onChange={this.handleValueChange}/><br/>
-                성별: <input type="text" name="gender" value={this.state.gender} onChange={this.handleValueChange}/><br/>
-                직업: <input type="text" name="job" value={this.state.job} onChange={this.handleValueChange}/><br/>
-                <button type="submit">추가하기</button>
-            </form>    
-        )
+  addCustomer(){
+    const url = '/api/customers';
+    const formData = new FormData();
+    formData.append('image', this.state.file)
+    formData.append('name', this.state.userName)
+    formData.append('birth', this.state.birth)
+    formData.append('gender', this.state.gender)
+    formData.append('job', this.state.job)
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
     }
-}
+    return axios.post(url, formData, config)
+  }
 
-export default CustomerAdd;
+  handleClickOpen() {
+    this.setState({
+      open: true
+    });
+  }
+
+  handleClose() {
+    this.setState({
+      file: null,
+      userName: '',
+      birth: '',
+      gender: '',
+      job: '',
+      fileName: '',
+      open: false
+    })
+  }
+
+  render() {
+    const { classes } = this.props;
+    return (
+        <div>
+          <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+            고객 추가하기
+          </Button>
+          <Dialog open={this.state.open} onClose={this.handleClose}>
+            <DialogTitle>고객 추가</DialogTitle>
+            <DialogContent>
+              <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} />
+              <label htmlFor="raised-button-file"> 
+                <Button variant="contained" color="primary" component="span" name="file">
+                  {this.state.fileName === ''? "프로필 이미지 선택" : this.state.fileName}
+                </Button>
+              </label><br/>
+              <TextField label="이름" type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br/>
+              <TextField label="생년월일" type="text" name="birth" value={this.state.birth} onChange={this.handleValueChange} /><br/>
+              <TextField label="성별" type="text" name="gender" value={this.state.gender} onChange={this.handleValueChange} /><br/>
+              <TextField label="직업" type="text" name="job" value={this.state.job} onChange={this.handleValueChange} /><br/>
+            </DialogContent>
+            <DialogActions>
+              <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
+              <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      )
+    }
+  }
+
+export default withStyles(styles)(CustomerAdd)
+
+*/
