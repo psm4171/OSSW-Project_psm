@@ -1,120 +1,3 @@
-
-
-import React from 'react'
-import axios from 'axios';
-//import { post } from 'axios';
-
-
-
-class CustomerAdd extends React.Component {
-
-
-  constructor(props) {
-
-    super(props);
-
-    this.state = {
-      file: null,
-      userName: '',
-      birth: '',
-      gender: '',
-      job: '',
-      fileName: ''
-    }
-
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.handleFileChange = this.handleFileChange.bind(this)
-    this.handleValueChange = this.handleValueChange.bind(this)
-    this.addCustomer = this.addCustomer.bind(this)
-
-  }
-
-
- // 고객 목록은 비동기적, 고객을 추가한 이후에 서버 응답을 받고
-  // 고객 목록을 받아옴. 
-  handleFormSubmit(e) {
-    e.preventDefault()
-    this.addCustomer()
-    .then((response) => {
-      console.log(response.data);
-      this.props.stateRefresh(); 
-    })
-
-    this.state = ({
-      file: null,
-      userName: '',
-      birth: '',
-      gender: '',
-      job: '',
-      fileName: ''
-    })
-
-  }
-
-
-  handleFileChange(e) {
-    this.setState({
-      file: e.target.files[0],
-      fileName: e.target.value
-    });
-  }
-
-  
-
-  handleValueChange(e) {
-    let nextState = {};
-    nextState[e.target.name] = e.target.value;
-    this.setState(nextState);
-  }
-
-
-
-  addCustomer(){
-
-    const url = '/api/customers';
-    const formData = new FormData();
-    formData.append('image', this.state.file)
-    formData.append('name', this.state.userName)
-    formData.append('birth', this.state.birth)
-    formData.append('gender', this.state.gender)
-    formData.append('job', this.state.job)
-
-    const config = {
-
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    }
-    return axios.post(url, formData, config)
-  }
-
-
-
-  render() {
-
-    return (
-
-        <form onSubmit={this.handleFormSubmit}>
-
-          <h1>고객 추가</h1>
-          프로필 이미지: <input type="file" name="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
-          이름: <input type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br/>
-          생년월일: <input type="text" name="birth" value={this.state.birth} onChange={this.handleValueChange} /><br/>
-          성별: <input type="text" name="gender" value={this.state.gender} onChange={this.handleValueChange} /><br/>
-          직업: <input type="text" name="job" value={this.state.job} onChange={this.handleValueChange} /><br/>
-          <button type="submit">추가하기</button>
-
-        </form>
-
-      )
-    }
-  }
-
-export default CustomerAdd
-
-
-
-/*
 import React from 'react'
 import axios from 'axios';
 import { post } from 'axios';
@@ -153,6 +36,8 @@ class CustomerAdd extends React.Component {
     this.handleClose = this.handleClose.bind(this);
   }
 
+  // 고객 목록은 비동기적, 고객을 추가한 이후에 서버 응답을 받고
+  // 고객 목록을 받아옴. 
   handleFormSubmit(e) {
     e.preventDefault()
     this.addCustomer()
@@ -206,6 +91,7 @@ class CustomerAdd extends React.Component {
     });
   }
 
+   // 현재 팝업창이 화면에 출력되지 않도록 
   handleClose() {
     this.setState({
       file: null,
@@ -251,4 +137,3 @@ class CustomerAdd extends React.Component {
 
 export default withStyles(styles)(CustomerAdd)
 
-*/

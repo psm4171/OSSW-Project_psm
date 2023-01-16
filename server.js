@@ -28,7 +28,7 @@ const multer = require('multer');
 const upload = multer({dest: './upload'})
 
 // 클라이언트가 customers에 접속을 하면, DB에 접근해서 쿼리
-// 가져온 데이터를 rows변수로 처리
+// isDeleted = 0인 가져온 데이터를 rows변수로 처리
 // 모든 고객 데이터가 포함된 rows 변수를 사용자에게 보여줌
 app.get('/api/customers', (req, res) => {
     connection.query(
@@ -71,10 +71,10 @@ app.delete('/api/customers/:id', (req, res) => {
   let sql = 'UPDATE CUSTOMER_osswp SET isDeleted = 1 WHERE id = ?';
   let params = [req.params.id];
   connection.query(sql, params,
-   // "SELECT *FROM CUSTOMER_osswp WHERE isDeleted = 0",
     (err, rows, fields) => {
       res.send(rows);
     }
+    
 
   )
 });
