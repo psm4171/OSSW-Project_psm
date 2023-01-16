@@ -107,6 +107,7 @@ class App extends Component {
    //props는 변할 수 없는 데이터 
   // state는 컴포넌트 내에서 변할 수 있는 데이터를 가져올 때 
   // progress 바는 0%에서 100%까지 로딩 화면을 보이기 때문에 complted: 0
+  // 생성자에서 earchKeyword: '' 초기화해주면 초기에 새로고침시 전체 고객 데이터가 출력됨 
   constructor(props) {
     super(props);
     this.state = {
@@ -118,7 +119,7 @@ class App extends Component {
     this.handleValueChange = this.handleValueChange.bind(this)
   }
 
-  // 자동 새로고침 함수
+  // 자동 새로고침 함수, 검색 키워드도 초기화 
   stateRefresh() {
     this.setState({
       customers: '',
@@ -162,9 +163,11 @@ class App extends Component {
     this.setState(nextState);
   }
   render() {
+    // filteredComponents(this.state.customers)는 고객을 검색할 때, 정보를 보여주는 형
+    // 검색한 내용이 포함되어 있다면 그 데이터만 남겨두는 것 
     const filteredComponents = (data) => {
-      data = data.filter((c) => {
-          return c.name.indexOf(this.state.searchKeyword) > -1;
+     data = data.filter((c) => {
+      return c.name.indexOf(this.state.searchKeyword) > -1;
       });
       return data.map((c) => {
         return <Customer stateRefresh={this.stateRefresh} key={c.id} id={c.id} image={c.image} name={c.name} birth={c.birth} gender={c.gender} job={c.job} />
@@ -193,6 +196,8 @@ class App extends Component {
                   root: classes.inputRoot,
                   input: classes.inputInput,
                 }}
+
+                // 검색하는 기능
                 name="searchKeyword"
                 value={this.state.searchKeyword}
                 onChange={this.handleValueChange}

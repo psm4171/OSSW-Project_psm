@@ -1,29 +1,3 @@
-
-import React from 'react';
-
-// DELETE 메소드에 접속해서 데이터 삭제 
-class CustomerDelete extends React.Component{
-
-    deleteCustomer(id){
-        const url = '/api/customers' + id;
-        fetch(url,{
-            method: 'DELETE'
-        });
-        this.props.stateRefresh();
-    }
-
-    render(){
-        return(
-            <button onClick={(e) => {this.deleteCustomer(this.props.id)}}>삭제</button>
-        )
-    }
-}
-
-export default CustomerDelete;
-
-
-
-/*
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -55,6 +29,7 @@ class CustomerDelete extends React.Component {
         })
     }
 
+    // DELETE 메소드에 접속해서 데이터 삭제 
     deleteCustomer(id){
         const url = '/api/customers/' + id;
         fetch(url, {
@@ -89,4 +64,3 @@ class CustomerDelete extends React.Component {
 }
 
 export default CustomerDelete;
-*/
