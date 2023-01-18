@@ -101,7 +101,6 @@ const styles = theme => ({
 
 // 상태 관리를 통해 상태 변환시 화면을 재구성 
 // 고객 정보는 변할 수 있는 데이터, 필요할때마다 서버에서 데이터를 불러옴 
-
 class App extends Component {
 
    //props는 변할 수 없는 데이터 
@@ -132,6 +131,9 @@ class App extends Component {
   }
 
   // 모든 컴포넌트가 마운트, 고객 목록 데이터를 부르는 함수
+  // API를 불러와서 웹 사이트 화면에 특정한 뷰(View)를 출력하고자 한다면 componentDidMount() 함수에서 API를 비동기적으로 호출하면 됨.
+  // 이후에 API에서 응답(Response)이 돌아왔을 때 비로소 뷰(View)가 갱신되므로 화면에 API 응답 결과를 출력. 
+  // 비동기적으로 호출한다는 점에서 API 서버에서 응답을 하지 않으면 사용자에게 로딩 화면만 출력
   componentDidMount() {
     this.timer = setInterval(this.progress, 20);
     this.callApi()
@@ -162,8 +164,9 @@ class App extends Component {
     nextState[e.target.name] = e.target.value;
     this.setState(nextState);
   }
+
   render() {
-    // filteredComponents(this.state.customers)는 고객을 검색할 때, 정보를 보여주는 형
+    // filteredComponents(this.state.customers)는 고객을 검색할 때, 정보를 보여주는 형태
     // 검색한 내용이 포함되어 있다면 그 데이터만 남겨두는 것 
     const filteredComponents = (data) => {
      data = data.filter((c) => {
@@ -173,9 +176,11 @@ class App extends Component {
         return <Customer stateRefresh={this.stateRefresh} key={c.id} id={c.id} image={c.image} name={c.name} birth={c.birth} gender={c.gender} job={c.job} />
       });
     }
+
     const { classes } = this.props;
-    const cellList = ["번호", "프로필 이미지", "이름", "생년월일", "성별", "직업", "설정"]
+    const cellList = ["번호", "프로필 이미지", "이름", "생년월일", "성별", "직업", "설정", "설정"]
     return (
+  
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
@@ -229,7 +234,9 @@ class App extends Component {
             </TableBody>
           </Table>
         </Paper>
+
       </div>
+   
     );
   }
 }

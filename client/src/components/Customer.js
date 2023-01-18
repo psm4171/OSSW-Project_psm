@@ -25,8 +25,6 @@ class Customer extends React.Component{
     }
 }
 
-//   <TableCell><CustomerDelete stateRefresh={this.props.stateRefresh} id={this.props.id}/></TableCell>
-// 사용자의 image, id를 랜더링하는 부분 
 
 // 고객의 남은 정보를 출력하는 부분 
 export default Customer; // 다른 컴포넌트에서 사용할 수 있게 내보냄 

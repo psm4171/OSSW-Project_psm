@@ -1,4 +1,5 @@
 const fs = require('fs');
+// Express 서버에 고객 데이터 삭제 모듈을 만든 부분 
 const express = require('express'); 
 const bodyParser = require('body-parser');
 const app = express();
@@ -75,7 +76,6 @@ app.delete('/api/customers/:id', (req, res) => {
       res.send(rows);
     }
     
-
   )
 });
 
