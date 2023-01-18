@@ -15,6 +15,13 @@
 * 클라이언트가 customers에 접속을 하면, DB에 접근해서 쿼리
 * react 클라이언트에서 해당 비동기 통신을 이용하여 서버에 접근 후 데이터를 가져오는 부분
 
+## Customer.js는 어떤 역할? 
+
+* 고객 데이터가 추가/삭제 되었을 때, 데이터의 행과 셀을 테이블로 구성하는 부분
+* CustomerDelete가 실행되었을 때, stateRefresh를 실행하는 부분 
+
+## CustomerAdd.js와 CustomerDelete.js는 고객 데이터를 추가하고 삭제하는 역할을 구성하는 부분
+
 
 ## 프레임워크 및 라이브러리
 
