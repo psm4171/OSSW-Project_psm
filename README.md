@@ -1,5 +1,5 @@
 ## Customer Management System 
-* OSSWP_ React와 Node js를 사용한 고객 관리 시스템 웹페이지 프로젝트
+* OSSWP_ React를 사용한 JS 기반 고객 관리 시스템 프로젝트
 
 
 ## App.js는 어떤 역할? 
