@@ -81,7 +81,9 @@ node js를 웹서버로 구축
 
 ## yarn dev 명령어를 통해 -> 클라이언트와 서버를 동시에 구축 
 
-![App 서버로부터 고객 정보를 받아오는 부분](https://user-images.githubusercontent.com/94738749/210943787-d71e8e3d-fe70-43db-bd50-0cad71335243.png)
+![image](https://user-images.githubusercontent.com/94738749/213172366-2717e932-f80a-4012-b012-e3b4cc266f80.png)
+
+
 
 ## 서버 부분 port:5000에서 클라이언트 부분 port:3000으로 데이터를 전송하여 실행한 부분 
 
