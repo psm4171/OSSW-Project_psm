@@ -100,4 +100,9 @@ node js를 웹서버로 구축
 
 ![DB에 삽입한 데이터와 서버를 통해 데이터를 불러와서 클라이언트에 표시](https://user-images.githubusercontent.com/94738749/211307818-f74f4ed0-6c9a-490d-87fc-3ae87b4667a4.png)
 
+## AWS로 구축한 DB에 입력된 고객 데이터 정보 
+
+![AWS로 구축한 DB에 입력된 고객 데이터 정보 ](https://user-images.githubusercontent.com/94738749/213169006-0c2efa9a-c43d-472f-8449-40aa38562845.png)
+ 
+
 
