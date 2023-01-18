@@ -4,10 +4,10 @@
 
 ## App.js는 어떤 역할? 
 
-* material ui를 이용한 테이블 구조를 구성 
-* 상태 관리를 통해 상태 변환시 화면을 재구성
-* 고객 정보는 변할 수 있는 데이터로, 필요할때마다 서버에서 데이터를 불러오는 부분 
-* 비동기적으로 async 호출 , 고객 목록 데이터를 반환
+* App.js는 실질적인 웹 사이트 화면에 대한 내용 출력을 담당하는 역할
+* 고객 정보는 변할 수 있는 데이터로, 필요할때마다 서버에서 데이터를 불러오는 역할 
+* 서버로부터 JSON 데이터를 모두 받아왔을 때 테이블에 데이터 입력 
+* 비동기적으로 async 호출, 고객 목록 데이터를 반환
 
 ## server.js는 어떤 역할? 
 
@@ -19,8 +19,23 @@
 ## 프레임워크 및 라이브러리
 
 - Node js : 사용자의 고객정보를 데이터베이스로 관리할 수 있는 웹서버 프로그래밍
+- 파일 업로드 요청시 필요한 multer 라이브러리를 사용
+- AWS RDS 서비스로 MySQL DB 구축 
 - material ui : 디자인 프레임워크 
 - react : 웹 프론트엔드 라이브러리 
+- axios : 서버와의 통신 목적의 라이브러리
+
+## 프로그램 흐름도  
+1.yarn dev를 실행하여 클라이언트와 서버를 동시 구축 
+2. 클라이언트 프로그램과 서로 데이터를 주고받는 
+api역할인 node js를 웹서버로 구축
+3. 클라이언트는 해당 서버에 있는 고객의 정보를 받아와서 화면에 출력하는 형태가
+필요 
+-> react 클라이언트에서 서버에 접근 후 데이터를 가져옴
+4. 클라이언트에 전송한 고객 데이터를 하이디SQL을 통해 DB에 업로드 
+5. 사용자가 고객 정보를 추가하면 createdDate에 now()를 통해 추가한 시간 저장하고
+고객 정보 추가하면 -> App.js의 state 값을 새롭게 갱신  
+6. 삭제를 수행했을 때 삭제 체크만 한 뒤에 실제 데이터베이스에는 남겨 놓는 방식 (사용자가 고객 정보를 삭제하면 isDeleted에 count 됨. isDeleted = 1)
 
 ## npm이란 node js 기반으로된 각종 패키지를 관리하는 도구 -> react 개발환경 구축 
 
@@ -79,69 +94,3 @@ node js를 웹서버로 구축
 ![DB에 삽입한 데이터와 서버를 통해 데이터를 불러와서 클라이언트에 표시](https://user-images.githubusercontent.com/94738749/211307818-f74f4ed0-6c9a-490d-87fc-3ae87b4667a4.png)
 
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
