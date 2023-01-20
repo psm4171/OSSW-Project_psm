@@ -116,6 +116,13 @@ node js를 웹서버로 구축
  
 ![고객관리시스템8_App Bar](https://user-images.githubusercontent.com/94738749/213617615-45ce4d32-f3c1-4818-99da-87c1d3094f74.png)
 
+## 고괙관리시스템 추가 및 삭제
+### 추가
+![고객관리시스템2_추가](https://user-images.githubusercontent.com/94738749/213617905-3f983203-eeb9-45e0-a73d-cad1e3daf954.png)
+
+### 삭제
+![고객관리시스템4_삭제](https://user-images.githubusercontent.com/94738749/213618001-78dba8bd-110d-40c5-ad78-0df7e66b0358.png)
+
 
 ## 고객관리시스템 구성 화면
 
