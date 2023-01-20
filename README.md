@@ -112,5 +112,12 @@ node js를 웹서버로 구축
 
 ![AWS로 구축한 DB에 입력된 고객 데이터 정보 ](https://user-images.githubusercontent.com/94738749/213169006-0c2efa9a-c43d-472f-8449-40aa38562845.png)
  
+ ## 고객관리시스템 구성 App Bar UI 
+ 
+![고객관리시스템8_App Bar](https://user-images.githubusercontent.com/94738749/213617615-45ce4d32-f3c1-4818-99da-87c1d3094f74.png)
 
+
+## 고객관리시스템 구성 화면
+
+![고객관리시스템1](https://user-images.githubusercontent.com/94738749/213617519-b8dd82bc-3adc-4b43-9ecb-0db99af1382a.png)
 
